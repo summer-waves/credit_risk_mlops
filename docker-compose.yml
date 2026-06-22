@@ -1,0 +1,13 @@
+version: "3.9"
+
+services:
+  api:
+    build: .
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./mlruns:/app/mlruns
+      - ./mlflow.db:/app/mlflow.db
+      - ./data/processed:/app/data/processed
+    environment:
+      - MLFLOW_TRACKING_URI=sqlite:///app/mlflow.db

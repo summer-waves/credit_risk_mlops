@@ -1,0 +1,11 @@
+fastapi
+uvicorn
+pydantic
+mlflow
+xgboost
+pandas
+numpy
+scikit-learn
+pyarrow
+scipy
+psutil
