@@ -110,6 +110,17 @@ Unlike purely analytical projects, this architecture requires a blend of data sc
 
 ---
 
+## 🔮 Future Improvements
+
+While this pipeline represents a complete, operational MLOps lifecycle, there are several avenues for future scaling and optimization:
+
+1. **Automated Retraining Pipelines:** Integrate Apache Airflow or Prefect to automatically trigger data ingestion, feature engineering, and model retraining when Evidently AI detects a severe data drift threshold breach.
+2. **Cloud Deployment (AWS/GCP):** Migrate the local Docker Compose orchestration to a managed Kubernetes service (EKS/GKE) for high availability and auto-scaling of the FastAPI prediction endpoints.
+3. **Feature Store Integration:** Implement a centralized Feature Store (e.g., Feast) to decouple feature engineering from model training, allowing low-latency feature retrieval during real-time online inference.
+4. **Shadow Deployment / A/B Testing:** Build routing logic into the API to support shadow deployments, allowing new candidate models (Version 2) to be tested silently against live production traffic before replacing the active model (Version 1).
+
+---
+
 ## Repository Structure
 
 ```text
@@ -120,16 +131,18 @@ credit_risk_mlops/
 │   └── main.py                 # FastAPI application and prediction logic
 ├── dashboard/
 │   └── app.py                  # Streamlit monitoring dashboard
-├── docker/
-│   ├── Dockerfile              # API container image definition
-│   └── docker-compose.yml      # Multi-container orchestration
 ├── figures/                    # Architecture and evaluation screenshots
+├── reports/
+│   └── drift_report.html       # Generated Evidently AI data drift report
 ├── src/
-│   ├── features/               # Data engineering pipelines
-│   ├── training/               # XGBoost model training scripts
-│   └── monitoring/             # Evidently drift report generation
+│   ├── features/               # Data engineering and processing pipelines
+│   ├── ingestion/              # Raw data loading and formatting scripts
+│   ├── monitoring/             # Data drift simulation and reporting logic
+│   └── training/               # XGBoost model training and MLflow tracking
 ├── tests/
-│   └── test_api.py             # Pytest suite for API endpoints
-├── .gitignore
-├── requirements.txt
-└── README.md
+│   └── test_api.py             # Pytest suite for API endpoint validation
+├── .gitignore                  # Git tracking exclusions (data, mlruns, etc.)
+├── docker-compose.yml          # Docker Compose orchestration configuration
+├── Dockerfile                  # Docker image definition for the FastAPI app
+├── README.md                   # Project documentation and architecture guide
+└── requirements.txt            # Python environment dependencies
