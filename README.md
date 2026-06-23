@@ -3,6 +3,11 @@
 
 ---
 
+🔗 **Live Streamlit App:**  
+https://creditriskmlops-etk8hhsvavegxr9raaiphx.streamlit.app/
+
+---
+
 ## The Question
 
 Predicting loan defaults is one of the oldest problems in data science. But in modern industry, writing a training script that yields high accuracy locally is only 10% of the battle. The real challenge is **productionization**: How do you serve that model reliably? How do you track its versions? How do you ensure it doesn't silently degrade when real-world economic data shifts?
